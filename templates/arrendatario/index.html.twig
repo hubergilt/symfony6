@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Arrendatario index{% endblock %}
+
+{% block body %}
+    <h1>Arrendatario index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombres</th>
+                <th>Paterno</th>
+                <th>Materno</th>
+                <th>Dni</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for arrendatario in arrendatarios %}
+            <tr>
+                <td>{{ arrendatario.id }}</td>
+                <td>{{ arrendatario.nombres }}</td>
+                <td>{{ arrendatario.paterno }}</td>
+                <td>{{ arrendatario.materno }}</td>
+                <td>{{ arrendatario.dni }}</td>
+                <td>
+                    <a href="{{ path('app_arrendatario_show', {'id': arrendatario.id}) }}">show</a>
+                    <a href="{{ path('app_arrendatario_edit', {'id': arrendatario.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_arrendatario_new') }}">Create new</a>
+{% endblock %}

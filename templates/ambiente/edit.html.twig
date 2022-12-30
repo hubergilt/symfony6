@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Ambiente{% endblock %}
+
+{% block body %}
+    <h1>Edit Ambiente</h1>
+
+    {{ include('ambiente/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_ambiente_index') }}">back to list</a>
+
+    {{ include('ambiente/_delete_form.html.twig') }}
+{% endblock %}

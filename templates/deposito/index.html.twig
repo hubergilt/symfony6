@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Deposito index{% endblock %}
+
+{% block body %}
+    <h1>Deposito index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Monto</th>
+                <th>Anio</th>
+                <th>Mes</th>
+                <th>Observacion</th>
+                <th>FechaDeposito</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for deposito in depositos %}
+            <tr>
+                <td>{{ deposito.id }}</td>
+                <td>{{ deposito.monto }}</td>
+                <td>{{ deposito.anio }}</td>
+                <td>{{ deposito.mes }}</td>
+                <td>{{ deposito.observacion }}</td>
+                <td>{{ deposito.fechaDeposito ? deposito.fechaDeposito|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_deposito_show', {'id': deposito.id}) }}">show</a>
+                    <a href="{{ path('app_deposito_edit', {'id': deposito.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_deposito_new') }}">Create new</a>
+{% endblock %}
